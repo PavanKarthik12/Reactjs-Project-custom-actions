@@ -12,17 +12,18 @@ inputs:
 outputs:
   uploaded:
     description: 'Message to display that artifact was uploaded'
-    value: ${{ steps.upload-artifact.outputs.result }}
+    value: ${{ steps.artifact-result.outputs.result }}
 runs:
   using: composite
   steps:
     - name: Upload artifacts
+      id: upload-artifact
       uses: actions/upload-artifact@v3
       with:
         name: ${{ inputs.artifact-name }} 
         path: ${{ inputs.path }} 
     - name: Artifact result
-      id: upload-artifact
+      id: artifact-result
       if: steps.upload-artifact.outputs.outcome== 'true'
       run: |
         echo "::set-output name=result:: '${{ inputs.artifact-name }}'"
