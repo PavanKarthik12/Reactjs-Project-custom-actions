@@ -40,16 +40,13 @@ jobs:
       - name: Build website
         run: npm run build
       - name: Upload artifacts
+        id: upload-artifact
         uses: ./.github/actions/upload-artifact
         with:
           artifact-name: dist-files
           path: dist
-  Output-Information:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Print Uploaded information
-        run : echo "${{ needs.build.outputs.uploaded }}"
+        run : echo "${{ steps.upload-artifact.outputs.uploaded }}"
 
   deploy:
     needs: build
