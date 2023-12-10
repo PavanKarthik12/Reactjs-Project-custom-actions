@@ -44,6 +44,13 @@ jobs:
         with:
           artifact-name: dist-files
           path: dist
+  Output-Information:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Uploaded information
+        run : echo "${{ needs.build.outputs.uploaded }}"
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
