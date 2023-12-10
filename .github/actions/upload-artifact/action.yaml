@@ -24,7 +24,6 @@ runs:
         path: ${{ inputs.path }} 
     - name: Artifact result
       id: artifact-result
-      if: steps.upload-artifact.outputs.conclusion== 'true'
       run: |
         echo "::set-output name=result:: '${{ inputs.artifact-name }}'"
       shell: bash
