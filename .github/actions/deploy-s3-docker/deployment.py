@@ -5,6 +5,7 @@ from botocore.config import Config
 
 
 def run():
+    #for every env variable github actions will convert them into INPUT_(ENV VARIABLE in caps) example for env variable bucket it will be converted to INPUT_BUCKET
     bucket = os.environ['INPUT_BUCKET']
     bucket_region = os.environ['INPUT_BUCKET-REGION']
     dist_folder = os.environ['INPUT_DIST-FOLDER']
