@@ -25,9 +25,9 @@ jobs:
         run: npm run test
       - name: Upload test report
         if: failure() && steps.run-tests.outcome == 'failure'
-        uses: actions/upload-artifact@v3
+        uses: ./.github/actions/upload-artifact
         with:
-          name: test-report
+          artifact-name: test-report
           path: test.json
   build:
     needs: test
@@ -40,9 +40,9 @@ jobs:
       - name: Build website
         run: npm run build
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: ./.github/actions/upload-artifact
         with:
-          name: dist-files
+          artifact-name: dist-files
           path: dist
   deploy:
     needs: build
