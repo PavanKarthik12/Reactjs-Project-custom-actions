@@ -25,5 +25,5 @@ runs:
     - name: Artifact result
       id: artifact-result
       run: |
-        echo "::set-output name=result:: '${{  toJSON(steps.upload-artifact.outputs) }}'"
+        echo "::set-output name=result:: '${{  toJSON(steps.upload-artifact) }}'"
       shell: bash
