@@ -26,3 +26,4 @@ runs:
       if: steps.upload-artifact.outputs.outcome== 'true'
       run: |
         echo "::set-output name=result::successfully uploaded ..."
+      shell: bash
