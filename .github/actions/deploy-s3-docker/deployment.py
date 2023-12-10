@@ -13,14 +13,14 @@ def run():
     configuration = Config(region_name=bucket_region)
 
     s3_client = boto3.client('s3', config=configuration)
+    
 
     for root, subdirs, files in os.walk(dist_folder):
         for file in files:
             s3_client.upload_file(
                 os.path.join(root, file),
                 bucket,
-                os.path.join(root, file).replace(dist_folder + '/', ''),
-                ExtraArgs={"ContentType": mimetypes.guess_type(file)[0]}
+                file
             )
 
     website_url = f'http://{bucket}.s3-website-{bucket_region}.amazonaws.com'
