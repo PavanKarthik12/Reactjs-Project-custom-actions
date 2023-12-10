@@ -8,7 +8,6 @@ inputs:
     description: 'the region of S3 Bucket'
     required: true
     default: 'us-east-1'
-  dist-folder:
 outputs:
   website-url:
     description: 'The URL of website deployed'
