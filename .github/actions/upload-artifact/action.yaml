@@ -17,10 +17,12 @@ runs:
   using: composite
   steps:
     - name: Upload artifacts
-      id: upload-artifact
       uses: actions/upload-artifact@v3
       with:
         name: ${{ inputs.artifact-name }} 
         path: ${{ inputs.path }} 
+    - name: Artifact result
+      id: upload-artifact
+      if: steps.upload-artifact.outputs.outcome== 'true'
       run: |
         echo "::set-output name=result::successfully uploaded ..."
