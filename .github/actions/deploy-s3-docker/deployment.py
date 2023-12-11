@@ -14,7 +14,7 @@ def run():
 
     configuration = Config(region_name=bucket_region)
 
-    s3_client = boto3.resource('s3', config=configuration)
+    s3_client = boto3.client('s3', config=configuration)
     logger.info("S3 CLient")
     logger.info(s3_client)
 
